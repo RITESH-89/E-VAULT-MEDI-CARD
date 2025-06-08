@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Management System - Sign Up</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1a73e8;
+            --health-green: #34a853;
+            --govt-orange: #ff6d00;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            animation: formEntrance 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            max-width: 800px;
+        }
+
+        @keyframes formEntrance {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            animation: textGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes textGlow {
+            0%, 100% { text-shadow: 0 0 10px rgba(26, 115, 232, 0.3); }
+            50% { text-shadow: 0 0 20px rgba(26, 115, 232, 0.5); }
+        }
+
+        form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.9);
+        }
+
+        select:focus, input:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 15px rgba(26, 115, 232, 0.2);
+            transform: scale(1.02);
+        }
+
+        label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        #admin-signup,
+        #organization-signup,
+        #user-signup {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .visible-section {
+            display: grid !important;
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            gap: 1.5rem;
+            animation: sectionEntrance 0.6s ease-out;
+        }
+
+        @keyframes sectionEntrance {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        button[type="submit"] {
+            background: linear-gradient(45deg, var(--primary-blue), var(--health-green));
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button[type="submit"]::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                transparent, 
+                rgba(255,255,255,0.3), 
+                transparent);
+            transform: rotate(45deg);
+            animation: btnShine 3s infinite;
+        }
+
+        @keyframes btnShine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .otp-section {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .otp-section button {
+            background: var(--govt-orange);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .otp-section button:hover {
+            transform: scale(1.05);
+        }
+
+        .login-text {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #666;
+        }
+
+        .login-text a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .input-group {
+            position: relative;
+            animation: inputEntrance 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes inputEntrance {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🚀 Register To MEDVAULT-ECARD</h2>
+        <p class="text-center mb-4">Create your account in just 2 minutes!</p>
+
+        <form action="register.html" method="POST">
+            <div class="input-group">
+                <label for="account-type">Select Account Type:</label>
+                <select id="account-type" name="account-type" required class="form-select">
+                    <option value="" disabled selected>Select Account Type</option>
+                    <option value="admin">Admin</option>
+                    <option value="organization">Organization</option>
+                    <option value="user">User</option>
+                </select>
+            </div>
+
+            <!-- Admin-Specific Fields -->
+            <div id="admin-signup">
+                <h3>👨💼 Admin Details</h3>
+                <div class="input-group"><input type="text" placeholder="Full Name" required></div>
+                <div class="input-group"><input type="email" placeholder="Email Address" required></div>
+                <div class="input-group"><input type="tel" placeholder="Contact Number" required></div>
+                <div class="input-group"><input type="text" placeholder="Department/Unit"></div>
+                <div class="input-group"><input type="text" placeholder="Employee ID" required></div>
+                <div class="input-group"><input type="date" required></div>
+            </div>
+
+            <!-- Organization-Specific Fields -->
+            <div id="organization-signup">
+                <h3>🏥 Organization Details</h3>
+                <div class="input-group"><input type="text" placeholder="Organization Name" required></div>
+                <div class="input-group"><input type="text" placeholder="Registration Number" required></div>
+                <div class="input-group"><input type="text" placeholder="Authorized Personnel ID" required></div>
+                <div class="otp-section">
+                    <div class="input-group"><input type="text" placeholder="Enter OTP" required></div>
+                    <button type="button" onclick="sendOTP()">Send OTP</button>
+                </div>
+            </div>
+
+            <!-- User-Specific Fields -->
+            <div id="user-signup">
+                <h3>👤 User Details</h3>
+                <div class="input-group"><input type="text" placeholder="Aadhar Number" required></div>
+                <div class="otp-section">
+                    <div class="input-group"><input type="text" placeholder="Enter OTP" required></div>
+                    <button type="button" onclick="sendOTP()">Send OTP</button>
+                </div>
+                <div class="input-group"><input type="password" placeholder="Password" required></div>
+            </div>
+
+            <button type="submit">Create Account <i class="fas fa-arrow-right"></i></button>
+        </form>
+
+        <p class="login-text">Already have an account? <a href="login.html">Log In Here</a></p>
+    </div>
+
+    <script>
+        const accountType = document.getElementById("account-type");
+        const sections = {
+            admin: document.getElementById("admin-signup"),
+            organization: document.getElementById("organization-signup"),
+            user: document.getElementById("user-signup")
+        };
+
+        accountType.addEventListener("change", function() {
+            // Hide all sections
+            Object.values(sections).forEach(section => {
+                section.style.display = "none";
+                section.classList.remove("visible-section");
+            });
+
+            // Show selected section with animation
+            if(this.value) {
+                const selectedSection = sections[this.value];
+                selectedSection.style.display = "block";
+                setTimeout(() => {
+                    selectedSection.classList.add("visible-section");
+                    // Animate input groups
+                    const inputs = selectedSection.querySelectorAll('.input-group');
+                    inputs.forEach((input, index) => {
+                        input.style.animationDelay = `${index * 0.1}s`;
+                    });
+                }, 50);
+            }
+        });
+
+        function sendOTP() {
+            const btn = event.target;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            setTimeout(() => {
+                btn.innerHTML = 'OTP Sent!';
+                btn.style.backgroundColor = '#34a853';
+                setTimeout(() => {
+                    btn.innerHTML = 'Send OTP';
+                    btn.style.backgroundColor = '';
+                }, 2000);
+            }, 1000);
+        }
+
+        // Animate input groups on load
+        document.querySelectorAll('.input-group').forEach((input, index) => {
+            input.style.animationDelay = `${index * 0.1}s`;
+        });
+    </script>
+</body>
+</html>

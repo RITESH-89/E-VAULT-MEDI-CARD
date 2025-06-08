@@ -98,10 +98,10 @@ npm start
 
 ## 👥 Contributors
 
-* 👨‍💻 \[Your Name] — Developer & Designer
-* 👩‍💻 \[Team Member] — Frontend Integration
-* 🧑‍🏫 \[Mentor Name] — Guidance & Validation
-
+* 👨‍💻 \RITESH PAITHANKAR — Developer & Designer { LEADER }
+* 👩‍💻 \NIRAJ KHARAT — Frontend Integration
+* 👩‍💻 \KRISHNA KATHAL — Frontend Integration
+* 👩‍💻 \DHIRAJ KAJALE — Frontend Integration
 ---
 
 ## 📄 License
